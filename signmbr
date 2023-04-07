@@ -31,7 +31,7 @@ guard FileManager.default.fileExists(atPath: device) else {
 var signature = Data.init(count: 4)
 
 let error = signature.withUnsafeMutableBytes({
-        return SecRandomCopyBytes(kSecRandomDefault, 4, UnsafeMutableRawPointer.init(mutating: $0))
+        return SecRandomCopyBytes(kSecRandomDefault, 4, UnsafeMutableRawPointer.init(mutating: $0.baseAddress!))
 })
 
 if error != errSecSuccess {
